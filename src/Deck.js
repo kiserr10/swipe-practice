@@ -12,7 +12,6 @@ const SWIPE_THRESHOLD = 0.25 * SCREEN_WIDTH;
 const SWIPE_OUT_DURATION = 250;
 
 class Deck extends Component {
-
 	static defaultProps = {
 		onSwipeRight: () => {},
 		onSwipeLeft: () => {},
@@ -44,7 +43,7 @@ class Deck extends Component {
 		Animated.timing(this.state.position, {
 			toValue: { x: x * 2, y: 0 },
 			duration: SWIPE_OUT_DURATION
-		}).start();
+		}).start(() => this.onSwipeComplete(direction));
 	}
 
 	onSwipeComplete(direction) {
